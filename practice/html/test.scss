@@ -1,0 +1,149 @@
+@use 'reset';
+
+
+.main-bg h4 {
+    font-size: 16px;
+}
+
+.main-bg button {
+    color: red;
+}
+
+
+//nesting
+.main-bg {
+    h4 {
+        font-size: 16px;
+    }
+
+    button {
+        color: blue;
+    }
+}
+
+// @extend
+%btn {
+    width: 200px;
+    height: 200px;
+    padding: 20px;
+}
+
+.btn-blue {
+    @extend %btn;
+    color: blue
+}
+
+
+
+//@mixin 
+
+@mixin 작명($구멍, $구멍2) {
+    font-size: $구멍;
+    letter-spacing: $구멍2;
+}
+
+
+h3 {
+    @include 작명(30px, 2px)
+}
+
+h4 {
+    font-size: 10px;
+    letter-spacing: -1px;
+}
+
+@mixin 폰트스타일($구멍, $구멍2) {
+    font-size: $구멍;
+    #{$구멍2}: -1px;
+}
+
+p {
+    @include 폰트스타일(40px, width)
+}
+
+
+
+
+
+$메인칼라 : #2a4cb2;
+$서브칼라 : #eeeeee;
+$기본사이즈 : 16px;
+
+
+// 어려운 단어 기억해야할 때에는 변수문법 사용가능
+// 변수 만들려면 $변수명: 저장해서 쓸값;
+// sass에선 사칙연사 바로 가능 ( + - 는 같은 단위끼리)
+
+// nesting 문법 : 관련있는 class들 묶을 때 좋음 nesting은 두개 이상 중첩 x
+
+// @extend 중복되는 css 클래스로 묶어 사용할 수 있게하는 코드(class 복사)
+
+// @mixin 문법  $파라미터 긴 코드를 가변적으로 만들 때 씀 
+// 긴 코드를 짧은 단어로 축약할 때 사용
+// 굴자중간에 $변수나 $파라미터 넣을 땐 #{$변수명}
+
+//다른파일에 있는 내용 가져올 땐 @use'파일경로';
+
+//컴파일하기 싫은 파일은 _파일명.scss 로 작명
+
+.box {
+    color: $메인칼라;
+    font-size: $기본사이즈 + 2px;
+}
+
+.background {
+    background-color: #2a4cb2;
+    font-size: $기본사이즈 - 2px;
+}
+
+.exam-1 {
+    li {
+        list-style: none;
+        padding: 15px;
+        border: 1px solid #eee;
+        transition: all 0.5s ease;
+    }
+
+    .active {
+        background: #2a4cb2;
+        color: white;
+    }
+}
+
+.exam-2 {
+    p {
+        font-size: 20px;
+        border: 1px solid #eee;
+        padding: 15px;
+        margin: auto;
+        margin-top: 10px;
+        width: 80%;
+
+    }
+}
+
+
+@mixin 제출2 ($색깔) {
+    background-color: $색깔;
+}
+
+.blue {
+    @include 제출2(#2a4cb2)
+}
+
+.green {
+    @include 제출2(green)
+}
+
+.yellow {
+    @include 제출2(yellow)
+}
+
+.exam-3 {
+    p {
+        font-size: 20px;
+        border: 1px solid #eee;
+        background-color: black;
+        color: white;
+    }
+}

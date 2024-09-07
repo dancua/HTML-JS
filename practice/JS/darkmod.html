@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Document</title> 
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <link rel="stylesheet" href="main.css">
+         <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    </head>    
+    <body>
+<nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <span class="navbar-brand">JSShop</span>
+    <span class="badge bg-dark">Dark 🔄</span>
+    <button class="navbar-toggler" type="button">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
+</nav> 
+
+<script>
+//    badge 1회(홀수번) 클릭시 내부 글자를 Light로 변경
+//    badge 2회(짝수번) 클릭시 내부 글자를 Dark로 변경
+//    badge 3회 클릭시 내부 글자를 Light로 변경
+    
+//    var 변수이름 = 변수에넣을값;
+//    사용이유 1.길고 복잡한 자료들 저장가능 2.특정 값을 기억하게 만들기
+    
+//      변수의 선언 할당,범위
+//   var 이름;   이름 = 'kim'; 
+//  이렇게 선언과 할당을  따로 할 수 있음
+    
+//    var 이름 = 'kim'; 이름 = 'park'; 
+//    재할당도 가능
+    
+//    var let const 차이
+//    var : 기본 변수 선언
+//    let : 재선언이 불가능, 재할당은 가능
+//    ex) let 이름 = 'kim' let 이름 = 'park'; 와 같은 이름 변수 재          선언 불가능 장점: 실수 방지
+//    
+//    const : 재선언 x , 재할당 x 
+//    var: 범위 function
+    function 함수(){
+        var 이름;
+    }
+    
+//    let: 범위 {}
+    if() {
+        let 이름;
+       }
+    
+       이름(선언 안되어 있음)
+    
+//    const: 범위 {}
+    
+    
+    
+    var count = 0;
+    
+    $('.badge').on('click',function(){
+//        count++;
+//        count += 1;
+        count = count + 1;
+        console.log(count);
+        let isOdd = count % 2 == 1;
+        $('.badge').html(isOdd ? 'Light 🔄' : 'Dark 🔄');
+        
+        $('.navbar').toggleClass('bg-light',isOdd).toggleClass('bg-dark',!isOdd);
+        
+         $('.navbar').toggleClass('navbar-light',isOdd).toggleClass('navbar-dark',!isOdd);
+    })
+    
+</script>
+    
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+   
+    </body>
+</html>        
+                

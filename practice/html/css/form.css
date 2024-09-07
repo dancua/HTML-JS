@@ -1,0 +1,198 @@
+div,input,textarea {
+    box-sizing: border-box;
+}
+
+body {
+    margin:0px;
+}
+
+
+.main-form {
+    width:350px;
+    height:500px;
+    background-color:#eee;
+    padding: 20px;
+}
+
+
+p {
+    margin:0px;
+    padding:0px;
+    
+}
+
+
+
+
+.btn-form {
+    float:right;
+    width:120px;
+    height:30px;
+    background-color:darkorange;
+    color:white;
+    border:none;
+}
+
+.contact-name {
+   display:flex;
+    flex-direction: column;
+}
+
+.contact-container {
+    display:flex;
+    align-items: center;
+}
+
+.form-background {
+    background-color: black;
+    padding: 30px;
+}
+
+.form-white {
+    background-color: white;
+    padding: 30px;
+    width:80%;
+    max-width:600px;
+    margin:auto;
+}
+
+.form-input {
+    width:100%;
+    padding:10px;
+    font-size:20px;
+    border: 1px solid black;
+    border-radius: 5px;
+
+}
+
+.w-50 {
+    width:50%;
+    float:left;
+    padding: 10px;
+
+    
+}
+
+.w-100 {
+    width:100%;
+    padding:10px; 
+}
+
+.yellow-btn {
+    padding:10px;
+    display:block;
+    margin-left:auto;
+}
+
+
+
+
+
+
+/*-----------------------------------------------------*/
+
+
+
+        table {
+/*
+            border-collapse: collapse; 
+            width: 100%; 
+*/
+        }
+        th, td {
+
+            
+/*
+            padding: 8px; 
+            text-align: center;
+            border-bottom:1px solid black;
+*/
+        }
+
+.cart-table td {
+    padding:15px;
+    border-bottom: 1px solid #c2d3de;
+    
+}
+
+.shop-container {
+    width:1000px;
+    height:500px;
+    background-color:lightsteelblue;
+    display:block;
+    
+
+}
+
+.shop-main {
+    background-color:white;
+    width:70%;
+    height:auto;
+    
+    
+}
+
+.shop-item {
+    width:10%;
+    padding:10px;
+}
+
+
+
+.cart-background {
+    width:100%;
+    background-color:#c2d3de;
+    padding:120px;
+}
+
+.cart-table {
+    width:100%;
+    max-width:700px;
+    margin:auto;
+    background:white;
+    border-radius:10px;
+}
+
+.cart-table th:nth-child(2){
+    width:400px;
+}
+
+
+.cell-long {
+    width:700px;
+    text-align: center;
+}
+
+
+
+.btn-shop {
+    float:right; 
+    height:60px; 
+    width:33%;
+    background: navy;
+    color:white;
+}
+
+.btn {
+    
+}
+
+.input-text {
+    font-size:20px;
+}
+
+.input-test:focus {
+    border-bottom: 2px solid red;
+}
+
+.custom-link {
+    text-decoration: none;
+}
+
+.custom-link:link {
+    color:violet;
+}
+
+.custom-link:visited {
+    color:black;
+}

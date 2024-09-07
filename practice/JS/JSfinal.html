@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="JSfinal.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div style="background: #eee; height:2000px;">
+        <div class="container">
+            <div class="header">
+                <div style="display:flex; margin-left:10px;">
+                    <h5 class="col-5">집 꾸미기</h5>
+                    <a href="#Home" class="col-3">Home</a>
+                    <a href="#스토어" class="col-3">스토어</a>
+                    <a href="#시공견적" class="col-4">시공견적</a>
+                </div>
+            </div>
+            <br>
+            <input type="text" placeholder="검색어입력">
+            <div class="row">
+                <!-- 상품 카드가 들어갈 자리 -->
+            </div>
+
+            <div class="shop-main">
+                <h5 class="m-4">장바구니</h5>
+                <div class="drag" ondrop="drop(event)" ondragover="allowDrop(event)" style="border: 1px dashed #ccc; padding: 20px; min-height: 200px;">
+                    <p style="color:white; text-align: center;">여기로 드래그</p>
+                </div>
+            </div>
+
+       <div class="m-3">
+           <h5>최종가격</h5>
+           <p id="totalPrice">합계 : 0 원</p>
+        <button type="button" class="btn btn-dark" data-bs-toggle="modal"
+        data-bs-target="#price">구매하기</button>
+       </div>
+        </div>
+    </div>
+    
+    <div class="modal" id="price" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">입력 정보</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="recipient-name" class="col-form-label">성함</label>
+                        <input type="text" class="form-control" id="name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="message-text" class="col-form-label">연락처</label>
+                        <input type="text" class="form-control" id="hp">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-dark" data-bs-dismiss="modal">닫기</button>
+                <button id="bill" class="btn btn-dark">입력완료</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Canvas -->
+<canvas id="canvas" width="350" height="350" style="display: none; border: 1px solid black;"></canvas>
+
+<!-- Script -->
+<script>
+    var canvas = document.getElementById('canvas');
+    var c = canvas.getContext('2d');
+
+    document.getElementById('bill').addEventListener('click', function(){
+        // 캔버스 표시
+        canvas.style.display = 'block'; // 문자열로 'block'을 설정
+        
+        // 텍스트 그리기
+        c.font = '20px dotum';
+        c.fillText('안녕하세요', 30, 20);
+        c.fillText('반갑습니다', 30, 50);
+    });
+    console.log(c);
+</script>
+
+    <script>
+        let allProducts = []; // 모든 상품 저장
+        let cart = []; // 장바구니 상품 저장 (상품 데이터와 수량 저장)
+        let totalPrice = 0; // 총 가격
+
+        // 드래그 가능 설정
+        function allowDrop(ev) {
+            ev.preventDefault();
+        }
+
+        // 드래그할 요소의 ID 설정
+        function drag(ev) {
+            ev.dataTransfer.setData("productIndex", ev.target.getAttribute('data-index'));
+        }
+
+        // 드랍 이벤트 처리
+        function drop(ev) {
+            ev.preventDefault();
+            var productIndex = ev.dataTransfer.getData("productIndex"); // 드래그된 상품 인덱스 가져오기
+            var product = allProducts[productIndex]; // 해당 인덱스의 상품 정보 가져오기
+            addToCart(product, productIndex); // 장바구니에 추가하는 함수 호출
+        }
+        
+        
+
+        // 장바구니에 상품을 추가하는 함수
+        function addToCart(product, index) {
+            // 장바구니에 이미 존재하는 상품인지 확인
+            const cartItem = cart.find(item => item.index === index);
+            if (cartItem) {
+                // 상품이 이미 있으면 수량 증가
+                cartItem.quantity++;
+                document.getElementById(`quantity-${index}`).innerText = `수량: ${cartItem.quantity}`;
+            } else {
+                // 새 상품이면 장바구니에 추가
+                cart.push({ ...product, quantity: 1, index });
+                var cartItemHTML = 구매(product, index); // 구매 함수로 카드 생성
+                $('.drag').append(cartItemHTML); // 장바구니에 카드 추가
+            }
+            updateTotalPrice(product.price); // 가격 업데이트
+        }
+
+        
+        
+        // 장바구니에 들어가는 카드 디자인 (구매 함수)
+        function 구매(a, index) {
+            return `
+                <div id="cart-item-${index}" class="card text-center mb-3" style="width: 18rem;">
+                    <img src="img/${a.photo}" class="card-img-top" style="width:200px; height:200px;">
+                    <div class="card-body">
+                        <h5 class="card-title">${a.title}</h5>
+                        <p class="card-text">${a.brand}</p>
+                        <p class="card-text">가격: ${a.price} 원</p>
+                        <p id="quantity-${index}">수량: 1</p> <!-- 수량 표시 -->
+                    </div>
+                </div>`;
+        }
+
+        
+        
+        // 카드 디자인 함수 (디자인 함수로 상품 목록 표시)
+        function 디자인(a, index) {
+            return `
+                <div id="product-${index}" class="card m-4" style="width: 17rem; border: none; margin: auto;" draggable="true" ondragstart="drag(event)" data-index="${index}">
+                    <img src="img/${a.photo}" class="card-img-top" style="width:200px; height:200px;">
+                    <div class="card-body">
+                        <h5 class="card-title">${a.title}</h5>
+                        <p class="card-text">${a.brand}</p>
+                        <p class="card-text">가격: ${a.price} 원</p>
+                        <button class="btn btn-dark">담기</button>
+                    </div>
+                </div>`;
+        }
+
+        // 총 가격을 업데이트하는 함수
+        function updateTotalPrice(price) {
+            totalPrice += price; // 가격 누적
+            document.getElementById('totalPrice').innerText = `합계 : ${totalPrice} 원`; // 화면에 표시
+        }
+
+        // JSON 데이터 로드
+        $.get('store.json').done((data) => {
+            allProducts = data.products; // 전체 상품 데이터를 저장
+            displayProducts(allProducts); // 처음에 모든 상품을 보여줌
+        });
+
+        // 상품 리스트를 화면에 표시하는 함수
+        function displayProducts(products) {
+            $('.row').empty(); // 기존 목록 비우기
+            products.forEach((a, i) => {
+                var 템플릿 = 디자인(a, i); // 각 상품에 고유한 id 및 index 부여
+                $('.row').append(템플릿); // 상품을 화면에 추가
+            });
+        }
+        
+        
+        
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+
+</html>

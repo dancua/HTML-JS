@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link href="css/form.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <!--        가로 행 만들 땐 <tr> table row
+            세로 열 만들 땐 <td> table data 
+            제목용 세로 열 만들 땐 <th>
+            제목 행 : <thead>
+            일반 행 : <tbody>
+<table>은 기본적으로 틈이 존재하는데 border-collapse: collapse 로 제거\
+
+vertical-align: 세로정렬 inline/inline:block에서만
+display:inline 항상 옆으로 채워지는 폭과 너비가 없는 요소
+-->
+    <!DOCTYPE html>
+    <html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Shopping Cart</title>
+        <link href="css/main.css" rel="stylesheet">
+
+    </head>
+
+    <body>
+        <div class="cart-background">
+            <h3>Your Shopping Cart</h3>
+            <table class="cart-table">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td class="cell-long">Item</td>
+                        <td>Amount</td>
+                        <td>Price</td>
+                        <td>Total</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><img src="img/lion.png" width="50px;"></td>
+                        <td>카메라</td>
+                        <td>1</td>
+                        <td>7000</td>
+                        <td>7000</td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="5" style="text-align: right">총가격 : 7000</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div style="align-items: center;">
+                <a href="#">
+                    <p style="margin-top:20px;">Edit your shopping cart</p>
+                </a>
+                <button class="btn-shop">Chosse payment method</button>
+            </div>
+            <button class="btn">구매하기</button>
+
+            <input class="input-text">
+            <a href="#" class="custom-link">asd</a>
+        </div>
+
+
+
+
+    </body>
+
+    </html>
+
+
+    <!--
+    <form>
+        <div class="shop-container">
+            <div>
+                <h4>Your shopping cart</h4>
+            </div>
+            <div class="shop-main">
+                <table>
+                    <thead>
+                        <tr>
+                            <th colspan="2">Item</th>
+                            <th>Amount</th>
+                            <th>Price</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr colspan="4">
+                            <td class="shop-item">
+                                <img src="이미지경로" >
+                                </td>
+                            <td>
+                                <span>SONY</span>
+                                <p>Fe 70-200 mm F2.8 GM OSS</p>
+                            </td>
+                            <td>1</td>
+                            <td>1979.00\</td>
+                            <td>1979.00\</td>
+
+                        </tr>
+                        <tr rowspan="4">
+                            <td class="shop-item">
+                                <img src="이미지경로" >
+                            </td>
+                            <td>
+                            <span>SONY</span>
+                               <br>
+                            Sonnar T' E 24mm F1.8 ZA
+                            </td>
+                            <td>1</td>
+                            <td>989.00\</td>
+                            <td>989.00\</td>
+                        </tr>
+                        <tr>
+                        <td colspan="5">2968.00\</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p style="float:left;"><a href="">Edit your shopping cart</a></p>
+            <div>
+            <button>Choose payment method</button>
+            </div>
+        </div>
+    </form>
+-->

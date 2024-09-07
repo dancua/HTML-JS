@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas Example</title>
+</head>
+<body>
+
+<button id="drawBtn">캔버스에 그리기</button>
+<canvas id="canvas" width="350" height="350" style="border: 1px solid black; display: none;"></canvas>
+
+<script>
+    var canvas = document.getElementById('canvas');
+    var c = canvas.getContext('2d');
+
+    document.getElementById('drawBtn').addEventListener('click', function() {
+        // 캔버스 표시
+        canvas.style.display = 'block';
+
+        // 텍스트 그리기
+        c.font = '20px dotum';
+        c.fillText('안녕하세요', 30, 20);
+        c.fillText('반갑습니다', 30, 50);
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link href="css/main2.css" rel="stylesheet">
+</head>
+
+
+<style>
+    .video-box {
+  height: 500px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.video-container {
+  position: absolute;
+  width : 100%;
+  top: 50%;
+  left: 50%;
+  transform : translate(-50%,-50%);
+  z-index: -1;
+}
+    
+    </style>
+<body>
+   
+<!--   video 넣는법 
+<video src=""></video>
+   
+<video><source></video>
+  장점 : 호환성 챙길 수 있다
+  
+   오디오 넣는 법:
+  <audio src="파일경로">
+  
+<audio><source></video> 가능
+  
+  autoplay muted 
+  자동재생 가능 , 오디오는 자동재생 안됌
+  
+  preload="none" 미리다운 x
+  preload="auto" 미리다운 o
+  preload="metadata" 미리다운 적당히
+  
+  poster ="경로"
+  썸네일 이미지
+  
+  loop 
+  무한 반복
+  
+ 
+   -->
+
+   <video src="video/bridge.mp4" controls></video>
+   
+   <video controls>
+       <source src="video/bridge.mp4" type="video/mp4">
+       <source src="video/bridge-m.webm" type="video/mp4">
+       <source src="video/bridge-m.???" type="video/mp4">
+   </video>
+    
+      <video controls autoplay muted>
+       <source src="video/bridge.mp4" type="video/mp4">
+   </video>
+   
+   <video controls preload="auto">
+       <source src="video/bridge.mp4" type="video/mp4">
+   </video>
+   
+   <audio src="video/bass.mp3" controls></audio>
+   
+   <div class="video-box">
+  <video class="video-container" autoplay muted loop>
+    <source src="video/bridge.mp4" type="video/mp4">
+  </video>
+  <h3 class="video-title">Buy Our Shoes!</h3>
+</div>
+   
+</body>
+
+</html>

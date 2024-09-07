@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link href="css/pseudo.css" rel="stylesheet">
+
+    <meta name="viewport" content="width=device-width,
+       initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        input[type=file]::-webkit-file-upload-button {
+            background: skyblue;
+            border: none;
+        }
+
+        input::-webkit-input-placeholder {
+            color: red;
+        }
+
+        input[type=range] {
+            appearance: none;
+        }
+
+
+        input[type=range]::-webkit-slider-thumb {
+            appearance: none;
+            background: red;
+            width: 50px;
+            height: 50px;
+        }
+
+        progress {
+            -webkit-appearance: none;
+            background: white;
+            color:red;
+        }
+
+        ::-webkit-progress-bar {
+            background-color: red;
+            border-radius: 100px;
+            
+        }
+        
+        ::-webkit-progress-value {
+            background-color:orange;
+            border-radius: 100px;
+        }
+
+       
+    </style>
+</head>
+
+<body>
+
+    <!--::after : 내부 맨 뒤에 뭔가 추가묹할 때
+    ::before : 내부 맨 앞에 뭔가 추가할 때
+    ::first-letter : 문장 맨 앞 스타일
+    ::first-line : 문장 첫 줄 스타일 
+    
+    -webkit- : 크롬,사파리,Edge에서만 적용되는 스타일
+    -ms- Explorer에서만 적용
+    -moz- Firefox에서만 적용 
+    appearance: none; : 브라우저 기본 CSS 안보이게
+    -->
+
+
+    <div class="explain-box">
+        <h4>How we design our shoes</h4>
+        <p class="pseudo">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi maxime accusantium, iste consectetur id. Ad voluptate aliquid at architecto ducimus reiciendis illum alias quia, sed dolore natus recusandae suscipit voluptates!</p>
+    </div>
+
+
+    <input placeholder="안녕하세요">
+
+    <input type="range">
+
+
+    progress 숙제 태그 css 꾸미기
+
+    <progress value="0.5"></progress>
+
+
+    <input type="file" class="input-file">
+
+
+
+    <input type="file">
+    <div class="px-container">
+        <div class="px-content">
+            <i class="fas fa-shopping-cart fa-3x"></i>
+            <br>
+            <h4>Fast Shipping</h4>
+            <p>lorem ipsum</p>
+        </div>
+        <div class="px-content">
+            <i class="fas fa-globe-asia fa-3x"></i>
+            <br>
+            <h4>Good Service</h4>
+            <p>lorem ipsum</p>
+        </div>
+        <div class="px-content">
+            <i class="fas fa-user fa-3x"></i>
+            <br>
+            <h4>Free Coupons</h4>
+            <p>lorem ipsum</p>
+        </div>
+        <div class="px-content">
+            <i class="fas fa-tshirt fa-3x"></i>
+            <br>
+            <h4>New Products</h4>
+            <p>lorem ipsum</p>
+        </div>
+        <div></div>
+    </div>
+
+</body></html>

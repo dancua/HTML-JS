@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+
+<div class="container">
+  <div class="row">
+
+
+  </div>
+</div> 
+
+<div class="container my-3">
+<button class="btn btn-danger" id="price">가격순정렬</button>
+</div>
+
+
+<div class="container">
+<button class="btn btn-danger" id="more">더보기</button>
+</div>
+
+<div class="container my-3">
+    <button class="btn btn-danger" id="cut">6만원 이하</button>
+</div>
+
+<div class="container my-3">
+<button class="btn btn-danger" id="title">상품명정렬</button>
+</div>
+
+
+<script>
+  var products = [
+    { id : 0, price : 70000, title : '가스뭐' },
+    { id : 1, price : 50000, title : '나드랑' },
+    { id : 2, price : 60000, title : '다이소' }
+  ];
+    
+    
+//  디자인은 항상 여러개 만들생각말고 1개부터 만들면 나머지는 따라옴
+    
+//    f12 눌러서 애플리케이션에 들어가면 나옴
+//    localStorage, sessionStorage 이름: 값 형태로 저장가능
+//    용량은 5MB 문자/숫자만 저장가능
+//    localStorage는 사이트 재접속해도 유지
+//    sessionStorage는 사이트나가면 자동삭제
+//    localStorage 데이터 수정은 1.자료 꺼냄 2.꺼낸거 수정함 3.다시     넣음
+    
+//    indexedDB : 구조화된 대용량데이터 저장시
+//    Cookies 보통 로그인정보 저장 시
+//    Cache Storage html css js 파일 저장하는 곳
+    
+//    array/object -> JSON 은 JSON.stringify()
+//    JSON -> array/object 는 JSON.parse()
+    
+//    sibling 형제요소 사용
+    
+    
+//    localStorage.setItem('이름','kim');
+//    localStorage.getItem('이름');
+//    localStorage.removeItem('이름');
+//    
+// var arr = [1,2,3] // array/object -> JSON으로 바꾸면 저장가능
+// // JSON : array/object를 따옴표를 사용해 문자취급해줌
+// var newArr = JSON.stringify(arr);
+// 
+//    localStorage.setItem('num', newArr) // 강제로 문자로 변환함
+//    var 꺼낸거 = localStorage.getItem('num');
+//    JSON.parse(꺼낸거);
+//    console.log(꺼낸거);
+    
+    
+    var count = 0;
+    function 디자인(a) {  
+        return`
+        <div class="col-sm-4">
+        <img src="https://via.placeholder.com/600" class="w-100">
+        <h5>${a.title}</h5>
+        <p>가격 : ${a.price}</p>
+        <button class="buy" data-id="${a.id}">구매</button>
+        </div>`;
+    }
+
+    
+    
+    $('#price').click(function(){
+         products.sort(function(a,b){
+        return a.price - b.price;
+         });
+        
+        $('.row').html('');
+        
+        products.forEach((a,i)=>{
+        var 템플릿 = 디자인(a);
+        $('.row').append(템플릿);
+         })     
+});
+    
+    
+    
+    
+    $('#cut').click(function(){
+        var 컷 = products.filter(function(a){
+            return a.price < 60001
+        });
+       
+        $('.row').html('');
+        
+        컷.forEach((a,i)=>{
+            var 템플릿 = 디자인(a);
+            $('.row').append(템플릿);
+        });
+    })
+    
+    
+    
+    $('#title').click(function(){
+        var 정렬 = products.sort(function(a,b){
+            if(a.title > b.title){
+                return -1;
+            } else if (a.title == b.title){
+                return 0;
+            } else {
+                return 1;
+            }
+        });
+        
+        console.log(정렬);
+        $('.row').html('');
+        
+        정렬.forEach((a,i)=>{
+            var 템플릿 = 디자인(a);
+            $('.row').append(템플릿);
+        });
+    })
+    
+        
+    
+    products.forEach((a,i)=>{
+//        console.log(products[i]);
+//        console.log(a);
+        var 템플릿 = 디자인(a);
+        $('.row').append(템플릿)
+    });
+    
+   
+//    $('.buy').click(function(){
+//       var productId = $(this).data('id');
+//        var select = products.find(function(products){
+//            return productId === products.id;
+//        });
+//        
+//        if(select){
+//    var cart = JSON.parse(localStorage.getItem('cart'))||[]
+//        cart.push(select.title);
+//            
+//        localStorage.setItem('cart',JSON.stringify(cart));
+//            
+//        alert(`장바구니에${select.title}가 추가되었습니다.`)
+//        }
+//    })
+        
+    $('.buy').click(function(e){
+        var title = $(e.target).siblings('h5').text();
+        
+        if(localStorage.getItem('cart') != null){
+    var 꺼낸거 = JSON.parse(localStorage.getItem('cart'));
+            
+            꺼낸거.push(title);
+        localStorage.setItem('cart',JSON.stringify(꺼낸거));
+            
+            console.log(꺼낸거);
+        }
+        else{
+        localStorage.setItem('cart',JSON.stringify([title]));
+        }
+    })
+    
+    
+
+    
+    
+
+
+    $('#more').on('click',function(){
+        count++;
+        
+    if(count == 1){
+    $.get("https://codingapple1.github.io/js/more1.json")
+    .done(function(data){
+//        console.log(data);
+        
+     data.forEach((a,i)=>{
+        var 추가 = 디자인(a);
+        $('.row').append(추가)
+        });
+    });
+        
+    } else if(count == 2){    
+        
+        $.get("https://codingapple1.github.io/js/more2.json")
+        .done(function(data){
+        console.log(data);
+        
+        data.forEach((a, i)=>{
+            var 추가 = 디자인(a);
+            $('.row').append(추가)
+        });
+    });
+        $('#more').hide();
+    }
+});
+    
+</script>
+
+<!--.sort()는 원본 변형 o .fliter() 는 원본 변형 x-->
+
+<script>
+var 어레이 = [7,3,5,2,40];
+var 어레이2 = ['a','b','c']
+//    어레이.sort(function(a,b){ // 숫자 오름차순 정렬법
+//        return a - b;
+//    });
+
+    
+    var 새어레이 = 어레이.filter(function(a){ 
+        //array자료 원하는 것만 필터하려면
+        // filter() 결과는 변수에 저장해서 사용해야함
+        return a < 4
+    })
+    console.log(새어레이);
+    
+    // array 자로 전부 변형하려면 .map()
+    var 새어레이2 = 어레이.map(function(a){
+        return a * 4
+    });
+    console.log(새어레이2);
+    
+    
+    어레이2.sort(function(){
+        
+        
+    })
+    console.log(어레이);
+    
+//    1. a,b는 array 안의 자료임
+//    2. return 오른쪽이 양수면 a를 오른쪽으로
+//    3. return 오른쪽이 음수면 b를 오른쪽으로
+    
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+
+</html>

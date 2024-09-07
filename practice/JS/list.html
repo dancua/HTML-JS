@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+
+<div class="card-group container">
+  <div class="card">
+    <img src="https://via.placeholder.com/600">
+    <div class="card-body" data-id="0">
+      <h5 class="title0">Card title</h5>
+         <p>가격 : <span class="price0">70000</span></p>
+      <button class="btn btn-danger">주문하기</button>
+    </div>
+  </div>
+  <div class="card">
+    <img src="https://via.placeholder.com/600">
+    <div class="card-body" data-id="1">
+      <h5 class="title1">Card title</h5>
+      <p>가격 : <span class="price1">70000</span></p>
+      <button class="btn btn-danger">주문하기</button>
+    </div>
+  </div>
+  <div class="card">
+    <img src="https://via.placeholder.com/600">
+    <div class="card-body" data-id="2">
+      <h5 class="title2">Card title</h5>
+        <p>가격 : <span class="price2">70000</span></p>
+      <button class="btn btn-danger">주문하기</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  var products = [
+    { id : 0, price : 70000, title : 'Blossom Dress' },
+    { id : 1, price : 50000, title : 'Springfield Shirt' },
+    { id : 2, price : 60000, title : 'Black Monastery' }
+  ];
+    
+//    $('.title1').html(products[0].title);
+//    $('.price1').html(products[0].price);
+    
+    let 데이터 = products.length;
+    for(var i =0; i < 데이터; i++){
+        $('.title'+i).html(products[i].title);
+        $('.price'+i).html(products[i].price);
+    }
+    
+//     document.querySelectorAll('.card-body h5')[0].innerHTML = products[0].title;
+//    
+//    document.querySelectorAll('.card-body span')[0].innerHTML
+//    = products[0].price;
+//    
+//    백틱기호로 ${}을 사용해 문자열에도 변수를 넣을 수 있다.
+//    var a = '안녕';
+//    `문자${a}문자`
+//    
+    
+</script> 
+
+<form action="/" method="post">
+    
+    
+</form>
+
+
+
+<script>
+//    ajax : 새로고침없이 GET, POST 요청하는 기능
+//    html 파일 미리보기 띄어야 ajax 사용가능 127.0.0.1 또는 localhost 가 떠있어야함
+//    VSCode 에디터는 extensions 메뉴에서 live server 설치
+//    -원하는 html 파일 우클릭해서 live server로 띄우기
+    
+
+    $.get('https://codingapple1.github.io/hello.txt')
+        .done(function(data){
+            console.log(data)
+        })
+    .fail(function(){
+        console.log('실패함');
+    })
+    
+    
+    $.get('https://codingapple1.github.io/price.json')
+        .done(function(data){
+        console.log(data.price);
+    })
+    
+    //브라우저 기본 함수 fetch 써도 ajax가능 
+    // 서버와 유저는 문자자료만 주고 받을 수 있다.
+    //object,array 보내고 싶으면 따옴표쳐서 문자처럼 만들어야함
+    // ex) "{"price":5000}" <- json(원하는 자료만 뽑기 힘듦)
+    
+    fetch('https://codingapple1.github.io/price.json')
+    .then(res => res.json()) // <- 받아온 JSON을 object로 바꿔주는 기능 $.get() 얘는 JSON -> object 자동변환해줌
+    // axios 라이브러리 (ajax 편하게 쓰고 싶을 때)
+    .then(data => {
+        console.log(data)
+    })
+    .catch(error => {
+        console.log(error);
+    })
+    
+//    $.post('https://codingapple1.github.io/hello.txt',{name:'kim'}
+//          ).done(function(data){
+//            console.log(data)
+//})
+    
+    
+    
+    </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+
+</html>

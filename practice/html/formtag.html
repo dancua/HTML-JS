@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link href="css/form.css" rel="stylesheet">
+</head>
+    <body>
+    <div class="form-background">
+        <div class="form-white">
+            <form>
+                <div class="w-100">
+            <h3>contact Us</h3>
+                <p>Your Email</p>
+                <input class="form-input" type="email"
+                       placeholder="email@example.com">
+                    </div>
+            <div class="w-50">
+                 <p>First Name</p>
+                <input class="form-input" type="text">
+                </div>     
+            <div class="w-50">
+            <p>Last Name</p>
+                <input class="form-input" type="text">    
+            </div>    
+                <div style="clear: both;"></div>
+                
+            <div class="w-100">
+                <p>Message</p>
+                <textarea class="form-input">
+                </textarea>
+                </div>    
+                <div>
+            <input id="sub" type="checkbox">
+                    <label for="sub">subscribe</label>
+            </div>
+                <form>
+                <button class="yellow-btn">SEND</button>
+                </form>
+                
+            </form>
+        </div>
+        </div>
+        
+<!--        코드 재사용을 하기 위해선 내가 어떻게 코드를 짜야
+            다음번에도 그 코드를 사용할 수 있을지 고민해보고 짜기
+            <label>태그
+            <label for="지정">
+            하면 input id="label for로 지정해뒀던 이름"
+
+            Contact Us 섹션 만들기
+            1.셀렉터에 콤ㅏ쓰면 여러개 동시 선택가능
+            2.재사용이 가능하게 코드를 작성
+            그럼 금방금방 실력 좋아짐
+            3.<label> 태그 유용함
+-->
+        
+        
+        
+<!-- 내가 짠 코드
+
+    <div class="main-form">
+        <h3>Contact us</h3>
+        
+    <div class="contact-name">
+        <p>First name</p>
+            <input type="text">
+        <p>Last name</p>
+            <input type="text">
+        </div>
+
+이 부분 한 묶음이 아닌 두 div를 활용하여 박스 나누기
+
+<div>
+<div>
+
+        <form>
+//<div class="">
+        <p>your Email</p>
+        <input type="email" placeholder="email@example.com">
+//</div>
+        <div class="contact-container"> 지우기
+        <div class="contact-name"> 지우기
+//<div>
+        <p>First name</p>
+            <input type="text">
+//</div>
+
+//<div>
+        <p>Last name</p>
+            <input type="text">
+//</div>
+        </div>
+            </div>
+            <p>Message</p>
+             <input type="text" style="width:300px; height:100px;">
+            <br>
+            <input type="checkbox" id="subscribe">
+            <label for="subscribe">누르기</label>
+            
+            <form>
+            <button class="btn-form">SEND</button>
+            </form>
+        </form>
+        
+      </div>
+</div>
+</div>
+-->
+    </body>
+</html>
